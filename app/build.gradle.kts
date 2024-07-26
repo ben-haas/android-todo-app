@@ -76,6 +76,9 @@ dependencies {
     // DataStore Preferences dependencies
     implementation(libs.datastore.preferences)
 
+    // Compose Navigation
+    implementation(libs.compose.navigation)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
