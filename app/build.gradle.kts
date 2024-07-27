@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.13"
     }
     packaging {
         resources {
@@ -66,12 +66,13 @@ dependencies {
     implementation(libs.room.runtime)
     kapt(libs.room.compiler)
     implementation(libs.room.ktx)
+    implementation(libs.kotlinx.coroutines.core)
 
     // Hilt dependencies
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.hilt.lifecycle.viewmodel)
-    kapt(libs.hilt.compiler.viewmodel)
+    //implementation(libs.hilt.lifecycle.viewmodel)
+    //kapt(libs.hilt.compiler.viewmodel)
 
     // DataStore Preferences dependencies
     implementation(libs.datastore.preferences)
