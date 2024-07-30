@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Todo App</string>
     <string name="add_task">Add Task</string>
+    <string name="search_action">Search Tasks</string>
+    <string name="sort_action">Sort List</string>
+    <string name="delete_all_action">Delete All</string>
 </resources>
