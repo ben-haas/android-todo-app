@@ -22,6 +22,12 @@ val MediumPriorityColor  = Color(0xFFFFC114)
 val HighPriorityColor = Color(0xFFFF4646)
 val NonePriorityColor = Color(0xFFFFFFFF)
 
+object CustomContentAlpha {
+    const val HIGH: Float = 1f
+    const val MEDIUM: Float = 0.74f
+    const val DISABLED: Float = 0.38f
+}
+
 val ColorScheme.fabBackgroundColor: Color
     @Composable
     get() = if(isSystemInDarkTheme()) Pink80 else Pink40
