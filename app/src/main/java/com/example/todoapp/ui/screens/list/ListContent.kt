@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,7 +31,24 @@ import com.example.todoapp.ui.theme.taskItemContentColor
 import com.example.todoapp.ui.theme.topAppBarContentColor
 
 @Composable
-fun ListContent() {}
+fun ListContent(
+    tasks: List<ToDoTask>,
+    navigateToTaskScreen: (taskId: Int) -> Unit
+) {
+    LazyColumn {
+        items(
+            items = tasks,
+            key = { task ->
+                task.id
+            }
+        ) { task ->
+            TaskItem(
+                toDoTask = task,
+                navigateToTaskScreen = navigateToTaskScreen
+            )
+        }
+    }
+}
 
 @Composable
 fun TaskItem(
@@ -80,8 +99,8 @@ fun TaskItem(
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = toDoTask.description,
-                color = MaterialTheme.colorScheme.topAppBarContentColor,
-                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.taskItemContentColor,
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
