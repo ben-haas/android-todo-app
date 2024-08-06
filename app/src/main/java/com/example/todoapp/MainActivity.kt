@@ -19,18 +19,26 @@ import com.example.todoapp.ui.theme.TodoAppTheme
 import com.example.todoapp.ui.viewmodels.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+// Indicates that Hilt should provide dependencies to this activity
 @AndroidEntryPoint
+// Extends ComponentActivity, which is a base class for activities that use Jetpack Compose
 class MainActivity : ComponentActivity() {
 
+    // Late initialization of NavHostController to manage navigation
     private lateinit var navController: NavHostController
+    // Lazy instantiation of the ViewModel using Hilt
     private  val sharedViewModel: SharedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // Setting the content view of the activity to use Compose
         setContent {
+            // Applying the custom theme for the app
             TodoAppTheme {
+                // Initializing the NavHostController for managing navigation
                 navController = rememberNavController()
+                // Setting up the navigation graph with the navController and sharedViewModel
                 SetupNavigation(
                     navController = navController,
                     sharedViewModel = sharedViewModel

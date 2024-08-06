@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+// Manages UI-related data and business logic, shared across different composables
+
 @HiltViewModel
 class SharedViewModel @Inject constructor(
     private val repository: ToDoRepository
