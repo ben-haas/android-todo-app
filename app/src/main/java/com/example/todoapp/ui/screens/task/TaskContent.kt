@@ -41,7 +41,7 @@ fun TaskContent(
             value = title,
             onValueChange = {onTitleChange(it)},
             label = {Text(text = stringResource(id = R.string.title))},
-            textStyle = MaterialTheme.typography.bodyMedium,
+            textStyle = MaterialTheme.typography.titleMedium,
             singleLine = true
         )
 
@@ -60,7 +60,7 @@ fun TaskContent(
             value = description,
             onValueChange = { onDescriptionChange(it) },
             label = {Text(text = stringResource(id = R.string.description))},
-            textStyle = MaterialTheme.typography.bodySmall
+            textStyle = MaterialTheme.typography.bodyLarge
         )
     }
 }
