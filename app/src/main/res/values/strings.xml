@@ -17,4 +17,6 @@
     <string name="dropdown_arrow_icon">Dropdown Arrow</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+
+    <string name="validation_toast">There are empty fields.</string>
 </resources>
