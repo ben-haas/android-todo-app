@@ -148,6 +148,8 @@ private fun setMessage(
         "DELETE" -> "$taskTitle task deleted"
         "UPDATE" -> "$taskTitle task updated"
         "UNDO" -> "$taskTitle task restored"
+        "UNDO_ALL" -> "Tasks Restored"
+        "DELETE_ALL" -> "All tasks deleted"
         else -> "Something went wrong..."
     }
 }
