@@ -17,6 +17,11 @@
     <string name="dropdown_arrow_icon">Dropdown Arrow</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
     <string name="validation_toast">There are empty fields.</string>
+
+    <string name="delete_task">Remove \'%1$s\'?</string>
+    <string name="confirm_delete_task">Are you sure you want to remove \'%1$s\'?</string>
 </resources>
