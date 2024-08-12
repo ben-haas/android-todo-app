@@ -16,7 +16,6 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.emitAll
 import javax.inject.Inject
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PREFERENCE_NAME)
@@ -38,7 +37,7 @@ class DataStoreRepository @Inject constructor(
         }
     }
 
-    val readSortState: Flow<Unit> = dataStore.data
+    val readSortState: Flow<String> = dataStore.data
         .catch { exception: Throwable ->
             if (exception is IOException) {
                 emit(emptyPreferences())
@@ -47,7 +46,7 @@ class DataStoreRepository @Inject constructor(
             }
         }
         .map { preferences: Preferences ->
-            val sortState = preferences[PreferenceKeys.sortState] ?: Priority.NONE.name
+            preferences[PreferenceKeys.sortState] ?: Priority.NONE.name
         }
 
 }
