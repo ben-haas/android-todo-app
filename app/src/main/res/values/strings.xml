@@ -20,6 +20,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
+    <string name="float_animation">Float Animation</string>
+
     <string name="validation_toast">There are empty fields.</string>
 
     <string name="delete_task">Remove \'%1$s\'?</string>
