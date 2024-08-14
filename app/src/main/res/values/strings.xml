@@ -29,4 +29,6 @@
 
     <string name="delete_all_tasks">Remove All Tasks?</string>
     <string name="confirm_delete_all_tasks">Are you sure you want to delete all tasks? There is no going back.</string>
+
+    <string name="splash_screen_logo">Splash Screen Logo</string>
 </resources>

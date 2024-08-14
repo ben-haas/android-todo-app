@@ -28,6 +28,10 @@ object CustomContentAlpha {
     const val DISABLED: Float = 0.38f
 }
 
+val ColorScheme.splashScreenColor: Color
+    @Composable
+    get() = if(isSystemInDarkTheme()) PurpleGrey40 else Purple40
+
 val ColorScheme.fabBackgroundColor: Color
     @Composable
     get() = if(isSystemInDarkTheme()) Pink80 else Pink40
