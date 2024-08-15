@@ -30,6 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -147,9 +148,11 @@ fun DisplayTasks(
             val isDismissed = dismissState.currentValue != SwipeToDismissBoxValue.Settled
             if (isDismissed && dismissDirection == SwipeToDismissBoxValue.EndToStart) {
                 val scope = rememberCoroutineScope()
-                scope.launch {
-                    delay(300)
-                    onSwipeToDelete(Action.DELETE, task)
+                SideEffect {
+                    scope.launch {
+                        delay(300)
+                        onSwipeToDelete(Action.DELETE, task)
+                    }
                 }
             }
             val degrees by animateFloatAsState(
