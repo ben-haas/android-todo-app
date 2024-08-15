@@ -1,7 +1,6 @@
 package com.example.todoapp.ui.screens.list
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
@@ -21,8 +20,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.DismissDirection
-import androidx.compose.material3.DismissValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -48,6 +45,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.todoapp.R
 import com.example.todoapp.data.models.Priority
 import com.example.todoapp.data.models.ToDoTask
 import com.example.todoapp.ui.theme.HUGE_PADDING
@@ -57,10 +55,9 @@ import com.example.todoapp.ui.theme.PRIORITY_INDICATOR_SIZE
 import com.example.todoapp.ui.theme.TASK_ITEM_ELEVATION
 import com.example.todoapp.ui.theme.taskItemBackgroundColor
 import com.example.todoapp.ui.theme.taskItemContentColor
+import com.example.todoapp.util.Action
 import com.example.todoapp.util.RequestState
 import com.example.todoapp.util.SearchAppBarState
-import com.example.todoapp.R
-import com.example.todoapp.util.Action
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
