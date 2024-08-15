@@ -46,7 +46,6 @@ import com.example.todoapp.ui.theme.Typography
 import com.example.todoapp.ui.viewmodels.SharedViewModel
 import com.example.todoapp.util.Action
 import com.example.todoapp.util.SearchAppBarState
-import com.example.todoapp.util.TrailingIconState
 
 @Composable
 fun ListAppBar(
@@ -99,7 +98,7 @@ fun DefaultListAppBar(
 ) {
     TopAppBar(
         title = {
-            Text(text = stringResource(id = R.string.list_screen_title),
+                Text(text = stringResource(id = R.string.list_screen_title),
                 color = MaterialTheme.colorScheme.topAppBarContentColor)
                 },
         colors = TopAppBarDefaults.topAppBarColors(
@@ -248,9 +247,6 @@ fun SearchAppBar(
     onCloseClicked: () -> Unit,
     onSearchClicked: (String) -> Unit,
 ) {
-    var trailingIconState by remember {
-        mutableStateOf(TrailingIconState.READY_TO_DELETE)
-    }
 
     Surface(
         modifier = Modifier
@@ -289,19 +285,10 @@ fun SearchAppBar(
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        when(trailingIconState) {
-                            TrailingIconState.READY_TO_DELETE -> {
-                                onTextChange("")
-                                trailingIconState = TrailingIconState.READY_TO_CLOSE
-                            }
-                            TrailingIconState.READY_TO_CLOSE -> {
-                                if(text.isNotEmpty()) {
-                                    onTextChange("")
-                                } else {
-                                    onCloseClicked()
-                                    trailingIconState = TrailingIconState.READY_TO_DELETE
-                                }
-                            }
+                        if (text.isNotEmpty()) {
+                            onTextChange("")
+                        } else {
+                            onCloseClicked()
                         }
                     }
                 ) {
