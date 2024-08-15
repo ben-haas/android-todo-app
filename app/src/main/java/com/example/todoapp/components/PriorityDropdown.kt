@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.DropdownMenu
@@ -29,8 +30,11 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.example.todoapp.data.models.Priority
 import com.example.todoapp.ui.theme.CustomContentAlpha
@@ -52,9 +56,16 @@ fun PriorityDropDown(
         label = "dropdown animation"
     )
 
+    var parentSize by remember {
+        mutableStateOf(IntSize.Zero)
+    }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .onGloballyPositioned {
+                parentSize = it.size
+            }
             .background(MaterialTheme.colorScheme.background)
             .height(PRIORITY_DROPDOWN_HEIGHT)
             .clickable { expanded = true }
@@ -97,33 +108,19 @@ fun PriorityDropDown(
 
         DropdownMenu(
             modifier = Modifier
-                .fillMaxWidth(fraction = 0.94f),
+                .width(with(LocalDensity.current) {parentSize.width.toDp()}),
             expanded = expanded,
             onDismissRequest = {expanded = false}
         ) {
-            DropdownMenuItem(
-                text = { PriorityItem(priority = Priority.LOW) },
-                onClick = {
-                    expanded = false
-                    onPrioritySelected(Priority.LOW)
-                }
-            )
-
-            DropdownMenuItem(
-                text = { PriorityItem(priority = Priority.MEDIUM) },
-                onClick = {
-                    expanded = false
-                    onPrioritySelected(Priority.MEDIUM)
-                }
-            )
-
-            DropdownMenuItem(
-                text = { PriorityItem(priority = Priority.HIGH) },
-                onClick = {
-                    expanded = false
-                    onPrioritySelected(Priority.HIGH)
-                }
-            )
+            Priority.entries.toTypedArray().slice(0..2).forEach { priority ->
+                DropdownMenuItem(
+                    text = { PriorityItem(priority = priority) },
+                    onClick = {
+                        expanded = false
+                        onPrioritySelected(priority)
+                    }
+                )
+            }
         }
     }
 }
