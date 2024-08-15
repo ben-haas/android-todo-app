@@ -50,6 +50,14 @@ class SharedViewModel @Inject constructor(
     private val _allTasks = MutableStateFlow<RequestState<List<ToDoTask>>>(RequestState.Idle)
     val allTasks: StateFlow<RequestState<List<ToDoTask>>> = _allTasks
 
+    private val _sortState = MutableStateFlow<RequestState<Priority>>(RequestState.Idle)
+    val sortState: StateFlow<RequestState<Priority>> = _sortState
+
+    init {
+        getAllTasks()
+        readSortState()
+    }
+
     fun searchTasks(searchQuery: String) {
         _searchedTasks.value = RequestState.Loading
 
@@ -80,10 +88,7 @@ class SharedViewModel @Inject constructor(
             emptyList()
         )
 
-    private val _sortState = MutableStateFlow<RequestState<Priority>>(RequestState.Idle)
-    val sortState: StateFlow<RequestState<Priority>> = _sortState
-
-    fun readSortState() {
+    private fun readSortState() {
         _sortState.value = RequestState.Loading
 
         try {
@@ -105,7 +110,7 @@ class SharedViewModel @Inject constructor(
         }
     }
 
-    fun getAllTasks() {
+    private fun getAllTasks() {
         _allTasks.value = RequestState.Loading
 
         try {
