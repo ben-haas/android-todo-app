@@ -71,14 +71,15 @@ dependencies {
     // Hilt dependencies
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    //implementation(libs.hilt.lifecycle.viewmodel)
-    //kapt(libs.hilt.compiler.viewmodel)
 
     // DataStore Preferences dependencies
     implementation(libs.datastore.preferences)
 
     // Compose Navigation
     implementation(libs.compose.navigation)
+
+    // Splash Screen
+    implementation(libs.androidx.core.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
